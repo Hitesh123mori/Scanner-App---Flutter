@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart' ;
+import 'package:hackathon_scanner_app/widgets/app_colors.dart';
+
+import '../row_material/setting.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,18 +25,38 @@ class _HomeScreenState extends State<HomeScreen> {
         drawer: Drawer(
           child: Column(
             children: [
-              DrawerHeader(child: CircleAvatar()) ,
+              Container(
+                height: MediaQuery.of(context).size.width*0.75,
+                  width: MediaQuery.of(context).size.width*0.75,
+                  child: DrawerHeader(
+                      child: CircleAvatar()
+                  )
+              ) ,
+              Divider(color: AppColors.theme[""],),
+              InkWell(
+                onTap: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>bussinesInfo())) ;
+                },
+                child: ListTile(
+                  title: Text("Setting"),
+                  leading: Icon(Icons.settings),
+                ),
+              ),
+              ListTile(
+                title: Text("Log Out"),
+                leading: Icon(Icons.logout),
+              )
             ],
           ),
         ),
         // backgroundColor: ,
         body: Column(
           children: [
-            TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Search Here",
-                suffixIcon: Icon(Icons.search)
+            Padding(
+              padding: const EdgeInsets.only(top: 700.0,left: 320),
+              child: FloatingActionButton(
+                  onPressed: (){},
+                  child:Icon(Icons.document_scanner_outlined,) ,
               ),
             )
           ],
