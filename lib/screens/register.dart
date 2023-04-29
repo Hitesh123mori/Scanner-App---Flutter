@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_scanner_app/user.dart' as user ;
 
-import 'login.dart';
+import 'login_screen.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
