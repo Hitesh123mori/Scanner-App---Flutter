@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:118645670324:android:a1ee3420e7c464bd2db2e1",
+        "mobilesdk_app_id": "1:118645670324:android:652794755ef4a2e92db2e1",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.example.hackathon_scanner_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "118645670324-3ra9qodqrddnh27utjqs5h88faov1j8v.apps.googleusercontent.com",
+          "client_id": "118645670324-v1dpu07a3dl4vhtq8obqa55i52so06j9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.android.application",
+            "package_name": "com.example.hackathon_scanner_app",
             "certificate_hash": "8a21f1786de1683528870f6f6b70bd0b49b3c67f"
           }
         },
