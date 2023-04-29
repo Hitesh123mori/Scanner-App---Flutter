@@ -3,6 +3,7 @@ import 'package:flutter/material.dart' ;
 import 'package:hackathon_scanner_app/screens/register.dart';
 import 'package:hackathon_scanner_app/user.dart';
 import 'package:hackathon_scanner_app/screens/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/app_colors.dart';
 
@@ -99,11 +100,12 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: (){
                 FirebaseAuth.instance
                   .signInWithEmailAndPassword(email: _email_controller.text, password: _password_controller.text)
-                  .then((value) {
+                  .then((value) async {
 
-                UserId.uid = value.user!.uid;
-                //ToDo: add navigator to home screen
-                UserId.uid = value.user!.uid;
+                // UserId.uid = value.user!.uid;
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setString('UID', value.user!.uid);
+
                 //ToDo: add navigator to home screen
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
 

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_scanner_app/user.dart' as user ;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'login_screen.dart';
 
@@ -29,9 +30,14 @@ class _RegisterState extends State<Register> {
     FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password)
         .then((value) async {
       final docUser = FirebaseFirestore.instance.collection('users').doc(value.user!.uid);
+      // final tempRef = docUser.collection("contacts").add({"t":"t"}).then((value) => value.delete());
+
       final json = user.User(uid: value.user!.uid, name: name, email: email, phone: phone, password: password).toJson();
       await docUser.set(json);
-      user.UserId.uid = value.user!.uid ;
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('UID', value.user!.uid);
+
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen())) ;
 
     })
