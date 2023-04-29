@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' ;
+import 'package:hackathon_scanner_app/screens/SplashScreen.dart';
 
 void main()
 {
