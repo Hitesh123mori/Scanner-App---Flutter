@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' ;
+import 'package:hackathon_scanner_app/screens/list_contacts.dart';
 import 'package:hackathon_scanner_app/screens/login_screen.dart';
 import 'package:hackathon_scanner_app/widgets/app_colors.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -82,18 +83,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         // backgroundColor: ,
-        body: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.75,left: MediaQuery.of(context).size.width*0.75),
-              child: FloatingActionButton(
-                  onPressed: (){_scanQRCode();},
-                  child:Icon(Icons.qr_code_scanner_outlined,) ,
-              ),
-            )
-          ],
-        ),
+        body: ContactList(),
+
       ),
-    ) ;
+
+    );
+        floatingActionButton: FloatingActionButton(
+                                  onPressed: (){_scanQRCode();},
+                                 child:Icon(Icons.qr_code_scanner_outlined,) ,
+    );
   }
 }

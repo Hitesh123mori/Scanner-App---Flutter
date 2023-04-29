@@ -70,6 +70,10 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // fire store
     implementation platform('com.google.firebase:firebase-bom:31.5.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //real time db
+    implementation 'com.google.firebase:firebase-database:20.2.0'
 }
