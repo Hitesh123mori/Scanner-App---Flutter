@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
-import 'login.dart';
+import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -35,6 +34,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
         ),
       ),
- 
+    )  ;
   }
 }

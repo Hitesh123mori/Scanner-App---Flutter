@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon_scanner_app/user.dart' as user ;
+
 import 'login_screen.dart';
-import 'package:scanner_app/utils/user.dart' as user;
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _RegisterState extends State<Register> {
       final docUser = FirebaseFirestore.instance.collection('users').doc(value.user!.uid);
       final json = user.User(uid: value.user!.uid, name: name, email: email, phone: phone, password: password).toJson();
       await docUser.set(json);
-      user.UserId.uid = value.user!.uid;
+      user.UserId.uid = value.user!.uid ;
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen())) ;
 
     })
