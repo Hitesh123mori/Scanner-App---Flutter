@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:math' as math ;
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/app_colors.dart';
@@ -13,15 +13,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
-  late final AnimationController _controller =
-  AnimationController(duration: Duration(seconds: 5), vsync: this)..repeat();
-
-  void dispose()
-  {
-    _controller.dispose() ;
-    super.dispose() ;
-  }
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -49,23 +41,6 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar() ,
-              AnimatedBuilder(
-                animation: _controller,
-                child: Center(
-                  child: Container(
-                    color: Colors.red,
-                    width: 300 ,
-                    child: Container(color: Colors.green,
-                      width: 23,height: 420,),
-                  ),
-                ),
-                builder: (BuildContext context , Widget ? child) {
-                  return Transform.rotate(
-                    angle: _controller.value * 50 * math.pi,
-                    child: child,
-                  );
-                },
-              ),
             ],
           ),
         ),
