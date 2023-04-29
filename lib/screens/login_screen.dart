@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: ,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,9 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
             Expanded(child: SizedBox()),
 
-            Text("Welcome to app"),
+            Expanded(child: Text("Login",style: TextStyle(fontSize: 36),)),
 
-            Expanded(child: SizedBox()),
 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text("Sign In"),
             ),
 
-            Expanded(child: SizedBox()),
+            Expanded(flex:2, child: SizedBox()),
 
           ],
         ) ,
