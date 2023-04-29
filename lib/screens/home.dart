@@ -86,14 +86,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
         body: ContactList(),
 
-
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){_scanQRCode();},
+          child:Icon(Icons.qr_code_scanner_outlined,) ,
 
       ),
 
-    );
-        floatingActionButton: FloatingActionButton(
-                                  onPressed: (){_scanQRCode();},
-                                 child:Icon(Icons.qr_code_scanner_outlined,) ,
+    )
+
     );
   }
+
 }
