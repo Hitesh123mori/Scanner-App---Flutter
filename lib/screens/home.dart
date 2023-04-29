@@ -82,16 +82,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         // backgroundColor: ,
-        body: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.75,left: MediaQuery.of(context).size.width*0.75),
-              child: FloatingActionButton(
-                  onPressed: (){_scanQRCode();},
-                  child:Icon(Icons.qr_code_scanner_outlined,) ,
-              ),
-            )
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.75,left: MediaQuery.of(context).size.width*0.75),
+                child: FloatingActionButton(
+                    onPressed: (){_scanQRCode();},
+                    child:Icon(Icons.qr_code_scanner_outlined,) ,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     ) ;
