@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' ;
 import 'package:hackathon_scanner_app/screens/SplashScreen.dart';
+import 'package:hackathon_scanner_app/screens/read_fbdb_data.dart';
 
 void main ()
 async {
@@ -21,6 +22,7 @@ class _MyappState extends State<Myapp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      // home: ReadFBDBData(),
     ) ;
   }
 }

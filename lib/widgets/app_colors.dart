@@ -24,7 +24,7 @@ class AppColors {
       "secondaryColor": hexStringToColors("#393053"),
       "tertiaryColor": hexStringToColors("#635985")
     }
-    };
+  };
 
 
 }

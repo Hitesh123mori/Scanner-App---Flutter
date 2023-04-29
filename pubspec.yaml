@@ -38,6 +38,8 @@ dependencies:
   cloud_firestore: ^4.5.1
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.1
+  qrscan: ^0.3.3
+  permission_handler: ^10.2.0
 
 
 dev_dependencies:
