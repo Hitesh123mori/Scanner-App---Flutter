@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' ;
+import 'package:hackathon_scanner_app/screens/login_screen.dart';
 import 'package:hackathon_scanner_app/widgets/app_colors.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -63,8 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   leading: Icon(Icons.settings),
                 ),
               ),
-              const ListTile(
-                title: Text("Log Out"),
+
+              ListTile(
+                title: InkWell(
+                    onTap:  () {
+                      FirebaseAuth.instance.signOut().then((value) {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                        print("Signed Out");
+                      });
+                    },
+
+                    child: Text("Log Out")),
                 leading: Icon(Icons.logout),
               )
             ],
