@@ -19,7 +19,7 @@ class ContactList extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
-            .doc(getUid() as String?) // replace `userId` with the actual user ID
+            .doc(getUid().toString()) // replace `userId` with the actual user ID
             .collection('contacts')
             .snapshots(),
           builder: (context, snapshot) {
