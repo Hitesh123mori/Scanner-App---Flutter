@@ -4,6 +4,9 @@ import 'package:hackathon_scanner_app/screens/register.dart';
 import 'package:hackathon_scanner_app/user.dart';
 import 'package:hackathon_scanner_app/screens/home.dart';
 
+import '../widgets/app_colors.dart';
+
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -23,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: ,
+      backgroundColor:AppColors.theme["primaryColor"] ,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
             Expanded(child: SizedBox()),
 
-            Expanded(child: Text("Login",style: TextStyle(fontSize: 36),)),
+            Expanded(child: Text("Login",style: TextStyle(fontSize: 36,color: AppColors.theme["secondaryColor"]),)),
 
 
             Padding(
@@ -40,10 +43,14 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   TextFormField(
-                    decoration: const InputDecoration(
+                    style: TextStyle(color:AppColors.theme["secondaryColor"], ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                       labelText: "Email/Phone Number",
+                      labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
                       hintText: "Enter Phonenumber" ,
-                      prefixIcon: Icon(Icons.mail),
+                      hintStyle: TextStyle(color: AppColors.theme["secondaryColor"],),
+                      prefixIcon: Icon(Icons.mail,color: AppColors.theme["secondaryColor"],),
                       border: OutlineInputBorder(),
                     ),
                     controller: _email_controller,
@@ -52,12 +59,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 20,),
 
                   TextFormField(
+                    style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                     obscureText: !_isPasswordVisible, // toggle password visibility
                     decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                       labelText: 'Password',
+                      hintStyle: TextStyle(color: AppColors.theme["secondaryColor"],),
+                      labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
                       border: OutlineInputBorder(),
-                      prefixIcon: const Icon(Icons.password),
+                      prefixIcon: Icon(Icons.password,color: AppColors.theme["secondaryColor"],),
                       suffixIcon: IconButton(
+                        color:AppColors.theme["secondaryColor"] ,
                         icon: Icon(
                           _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                         ),
@@ -79,8 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 20,),
 
 
-            ElevatedButton(onPressed: (){
-              FirebaseAuth.instance
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.theme["secondaryColor"],
+              ),
+              onPressed: (){
+                FirebaseAuth.instance
                   .signInWithEmailAndPassword(email: _email_controller.text, password: _password_controller.text)
                   .then((value) {
 
@@ -103,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
               });
             },
 
-              child: Text("Sign In"),
+              child: Text("Sign In",style: TextStyle(color: AppColors.theme["primaryColor"]),),
             ),
 
             Expanded(flex:2, child: SizedBox()),
