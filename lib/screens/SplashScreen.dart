@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import '../widgets/app_colors.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // backgroundColor: ,
+         backgroundColor: AppColors.theme["primaryColor"] ,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -15,7 +15,12 @@ class AppColors {
 
   static Map themes = {
     "theme1": {
-      "primaryColor": hexStringToColors("#18122b"),
+      "primaryColor": hexStringToColors("##000000"),
+      "secondaryColor": hexStringToColors("#393053"),
+      "tertiaryColor": hexStringToColors("#635985")
+    },
+    "theme2": {
+      "primaryColor": hexStringToColors("##000000"),
       "secondaryColor": hexStringToColors("#393053"),
       "tertiaryColor": hexStringToColors("#635985")
     }
