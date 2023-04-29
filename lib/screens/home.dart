@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' ;
 import 'package:hackathon_scanner_app/widgets/app_colors.dart';
 
+import '../row_material/setting.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -31,9 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
               ) ,
               Divider(color: AppColors.theme[""],),
-              ListTile(
-                title: Text("Setting"),
-                leading: Icon(Icons.settings),
+              InkWell(
+                onTap: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>bussinesInfo())) ;
+                },
+                child: ListTile(
+                  title: Text("Setting"),
+                  leading: Icon(Icons.settings),
+                ),
               ),
               ListTile(
                 title: Text("Log Out"),
