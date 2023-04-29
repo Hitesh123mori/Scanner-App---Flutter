@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.75,left: MediaQuery.of(context).size.width*0.75),
               child: FloatingActionButton(
                   onPressed: (){_scanQRCode();},
-                  child:Icon(Icons.document_scanner_outlined,) ,
+                  child:Icon(Icons.qr_code_scanner_outlined,) ,
               ),
             )
           ],
