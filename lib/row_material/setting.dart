@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart' ;
+
+import '../screens/home.dart';
 
 class bussinesInfo extends StatefulWidget {
   const bussinesInfo({Key? key}) : super(key: key);
@@ -12,14 +15,39 @@ class _bussinesInfoState extends State<bussinesInfo> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          leading: BackButton(
-            onPressed: (){
-              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>))
-            },
+      home: DefaultTabController(
+        initialIndex: 1,
+        length: 2 ,
+        child: Scaffold(
+          appBar: AppBar(
+            leading: BackButton(
+              onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen())) ;
+              },
+            ),
+            bottom: TabBar(
+              isScrollable: true,
+              tabs: [
+                Container(
+                  width: MediaQuery.of(context).size.width*0.42,
+                  child: Tab(
+                    text: "Leads",
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width*0.42,
+                  child: Tab(
+                    text: "Leads",
+                  ),
+                ),
+
+              ],
+
+            ),
+            title: Text("Setting"),
           ),
         ),
+
       ),
     );
   }

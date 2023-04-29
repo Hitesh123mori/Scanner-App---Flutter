@@ -136,9 +136,9 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.end,
       // ignore: prefer_const_literals_to_create_immutables
       children:  [
-        const Text(
+        Text(
           "Don't have account?",
-          style: TextStyle(color: Colors.black54),),
+          style: TextStyle(color: AppColors.theme["secondaryColor"]),),
 
         SizedBox(width: 5,),
 
@@ -147,8 +147,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>Register())) ;
           },
 
-          child: const Text("Register",
-              style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 18)),
+          child: Text("Register",
+              style: TextStyle(color: AppColors.theme["tertiaryColor"], fontWeight: FontWeight.bold, fontSize: 18)),
         ) ,
       ],
     );
