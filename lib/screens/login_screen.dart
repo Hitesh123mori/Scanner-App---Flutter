@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
           },
 
           child: Text("Register",
-              style: TextStyle(color: AppColors.theme["tertiaryColor"], fontWeight: FontWeight.bold, fontSize: 18)),
+              style: TextStyle(AppColors.theme["secondaryColor"]), fontWeight: FontWeight.bold, fontSize: 18)),
         ) ,
       ],
     );
