@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart' ;
 
 import '../screens/home.dart';
+import 'AutoRespondText.dart';
 import 'Profile.dart';
 
 class bussinesInfo extends StatefulWidget {
@@ -50,7 +51,7 @@ class _bussinesInfoState extends State<bussinesInfo> {
           body: TabBarView(
             children: [
               Profile() ,
-
+              EditableTextDemo(),
         ],
       ),
         ),
