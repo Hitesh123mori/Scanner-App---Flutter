@@ -14,19 +14,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool isanimate = false ;
   @override
   void initState() {
     super.initState();
-
-    Timer(Duration(seconds: 2),(){
-      FirebaseAuth.instance.authStateChanges().listen((event) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) =>
-            event != null
-                ? HomeScreen()
-                : LoginScreen()));
-      });
-    }) ;
+       startanimation ();
   }
 
   @override
@@ -36,15 +28,34 @@ class _SplashScreenState extends State<SplashScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
          backgroundColor: AppColors.theme["primaryColor"] ,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar() ,
-            ],
-          ),
-        ),
+        body: SafeArea(
+          child: Stack(
+                 children: [
+                   AnimatedPositioned(
+                     top : isanimate  ? -12 : -24,
+                      left: isanimate ? -50 : -87 ,
+                       duration: Duration(milliseconds:500),
+                       child: Image(
+                         width: 300,
+                         height: 150,
+                         image: AssetImage("assets/Images/topleftcorner.jpg"),
+                       ),
+                   )
+                 ],
+               ),
+        )
+
+
       ),
     )  ;
+  }
+
+  Future startanimation() async {
+    await Future.delayed(Duration(milliseconds: 500)) ;
+    setState(() {
+      isanimate = true ;
+    });
+    await Future.delayed(Duration(milliseconds: 5000)) ;
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen())) ;
   }
 }
