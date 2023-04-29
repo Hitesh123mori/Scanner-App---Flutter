@@ -21,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }) ;
   }
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -34,6 +35,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
         ),
       ),
-    );
+ 
   }
 }
