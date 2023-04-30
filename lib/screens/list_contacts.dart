@@ -67,7 +67,7 @@ class ContactList extends StatelessWidget {
                           children: [
                             Column(
                               children: [
-                                Text("Name",style: TextStyle(fontSize: 30),),
+                                Text("${contact.name}",style: TextStyle(fontSize: 30),),
                                 SingleChildScrollView(
                                   child: Container(
                                     width: MediaQuery.of(context).size.width*0.9,
@@ -76,15 +76,15 @@ class ContactList extends StatelessWidget {
                                       child: Column(
                                         children: [
                                           Divider(),
-                                          ListTile(title: Text("Email"),subtitle: Text(""),),
+                                          ListTile(title: Text("Email: ${contact.email}"),subtitle: Text(""),),
                                           Divider(),
-                                          ListTile(title: Text("Phone"),subtitle: Text(""),),
+                                          ListTile(title: Text("Phone: ${contact.phone}"),subtitle: Text(""),),
                                           Divider(),
-                                          ListTile(title: Text("Whatsapp"),subtitle: Text(""),),
+                                          ListTile(title: Text("Whatsapp: ${contact.wa_phone}"),subtitle: Text(""),),
                                           Divider(),
-                                          ListTile(title: Text("Address"),subtitle: Text(""),),
+                                          ListTile(title: Text("Address: ${contact.address}"),subtitle: Text(""),),
                                           Divider(),
-                                          ListTile(title: Text("Website"),subtitle: Text(""),),
+                                          ListTile(title: Text("Website: ${contact.website}"),subtitle: Text(""),),
 
 
                                         ],

@@ -54,6 +54,7 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
               child: Text('Save'),
             ),
             Expanded(child: SizedBox()),
+
             Text(
               _displayText,
               style: TextStyle(fontSize: 18),
