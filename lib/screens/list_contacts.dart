@@ -69,9 +69,18 @@ class ContactList extends StatelessWidget {
                               children: [
                                 Text("Name",style: TextStyle(fontSize: 36),),
                                 Container(
-                                  color: Colors.red,
-                                  width: MediaQuery.of(context).size.width*3 ,
-                                  height: MediaQuery.of(context).size.height*0.1,
+                                  width: MediaQuery.of(context).size.width*0.9,
+                                  height: MediaQuery.of(context).size.height*0.4,
+                                  child: Column(
+                                    children: [
+                                      Text("Name") ,
+                                      Text("Email") ,
+                                      Text("Phone") ,
+                                      Text("Whatsapp Phone") ,
+                                      Text("Add") ,
+                                      Text("Website") ,
+                                    ],
+                                  ),
                                 )
 
                               ],
