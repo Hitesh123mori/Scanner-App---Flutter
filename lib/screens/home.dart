@@ -1,12 +1,15 @@
 import 'dart:convert';
 
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' ;
 import 'package:hackathon_scanner_app/CurUser.dart';
 import 'package:hackathon_scanner_app/screens/list_contacts.dart';
 import 'package:hackathon_scanner_app/screens/login_screen.dart';
 import 'package:hackathon_scanner_app/widgets/app_colors.dart';
+
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,6 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   var _user;
   List<DocumentSnapshot> _documents = [];
+
+
+
 
   @override
   void initState() {
@@ -142,6 +148,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   leading: Icon(Icons.settings),
                 ),
               ),
+
+              Divider(color: AppColors.theme[""],),
+              InkWell(
+                onTap: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>bussinesInfo())) ;
+                },
+                child: const ListTile(
+                  title: Text("Export CSV"),
+                  leading: Icon(Icons.settings),
+                ),
+              ),
+
 
               ListTile(
                 title: InkWell(
