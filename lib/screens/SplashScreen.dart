@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/app_colors.dart';
@@ -34,13 +34,24 @@ class _SplashScreenState extends State<SplashScreen> {
                    AnimatedPositioned(
                      top : isanimate  ? -12 : -24,
                       left: isanimate ? -50 : -87 ,
-                       duration: Duration(milliseconds:500),
+                       duration: Duration(milliseconds:450),
                        child: Image(
                          width: 300,
                          height: 150,
                          image: AssetImage("assets/Images/topleftcorner.jpg"),
                        ),
-                   )
+                   ) ,
+                   AnimatedPositioned(
+                     bottom : isanimate  ? -20 : -24,
+                     right: isanimate ? -70 : -87 ,
+                     duration: Duration(milliseconds:450),
+                     child: Image(
+                       width: 300,
+                       height: 150,
+                       image: AssetImage("assets/Images/bottomrightcorner.jpg"),
+                     ),
+                   ) ,
+
                  ],
                ),
         )
@@ -51,11 +62,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future startanimation() async {
-    await Future.delayed(Duration(milliseconds: 500)) ;
+    await Future.delayed(Duration(milliseconds: 50)) ;
     setState(() {
       isanimate = true ;
     });
-    await Future.delayed(Duration(milliseconds: 5000)) ;
+    await Future.delayed(Duration(milliseconds: 500)) ;
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen())) ;
   }
 }

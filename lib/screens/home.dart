@@ -8,8 +8,6 @@ import 'package:permission_handler/permission_handler.dart';
 import '../row_material/setting.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
