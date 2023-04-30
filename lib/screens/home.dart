@@ -13,8 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../row_material/setting.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
-import 'package:hackathon_scanner_app/user.dart' as user;
 
+import 'package:hackathon_scanner_app/user.dart' as user;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
