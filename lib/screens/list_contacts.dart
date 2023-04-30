@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_scanner_app/CurUser.dart';
@@ -8,12 +10,17 @@ import '../user.dart';
 
 class ContactList extends StatelessWidget {
 
-  void sendWhatsAppMessage(String phone, String message) async {
-    final url = "https://wa.me/$phone/?text=${message}";
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
+  void sendWhatsAppMessage(String phone) async {
+    final prefs = await SharedPreferences.getInstance();
+    String? message = await prefs.getString('wa_msg');
+
+    final uri_apk = "Whatsapp://send?phone=$phone&text=$message";
+    final uri_ios = "https://wa.me/$phone/?text=${Uri.parse(message!)}";
+
+    if (await canLaunchUrl(Uri.parse(uri_apk))) {
+      await launchUrl(Uri.parse(uri_apk));
     } else {
-      throw 'Could not launch $url';
+      throw 'Could not launch $uri_apk';
     }
   }
 
@@ -111,7 +118,7 @@ class ContactList extends StatelessWidget {
                                     height: 75,
                                     child: IconButton(
                                       onPressed: (){
-
+                                        sendWhatsAppMessage(contact.wa_phone);
                                       },
 
                                       icon: Image.asset('assets/icons/whatsapp-icon-3953.png'),)
