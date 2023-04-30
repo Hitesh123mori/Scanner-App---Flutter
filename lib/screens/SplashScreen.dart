@@ -29,32 +29,14 @@ class _SplashScreenState extends State<SplashScreen> {
       home: Scaffold(
          backgroundColor: AppColors.theme["primaryColor"] ,
         body: SafeArea(
-          child: Stack(
-                 children: [
-                   // Ex(child: Image(image: AssetImage("assets/Images/logo1.jpg"),)),
-                   AnimatedPositioned(
-                     top : isanimate  ? -12 : -24,
-                      left: isanimate ? -50 : -87 ,
-                       duration: Duration(milliseconds:450),
-                       child: Image(
-                         width: 300,
-                         height: 150,
-                         image: AssetImage("assets/Images/topleftcorner.jpg"),
-                       ),
-                   ) ,
-                   AnimatedPositioned(
-                     bottom : isanimate  ? -20 : -24,
-                     right: isanimate ? -70 : -87 ,
-                     duration: Duration(milliseconds:450),
-                     child: Image(
-                       width: 300,
-                       height: 150,
-                       image: AssetImage("assets/Images/bottomrightcorner.jpg"),
-                     ),
-                   ) ,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
 
-                 ],
-               ),
+              Center(child: Image.asset("assets/Images/logo1.jpg")),
+
+            ],
+          ),
         )
 
 
