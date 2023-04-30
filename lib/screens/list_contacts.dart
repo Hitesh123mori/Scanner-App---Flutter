@@ -61,25 +61,35 @@ class ContactList extends StatelessWidget {
                   onTap: ()
                     {
                       showModalBottomSheet(
-                        backgroundColor: Colors.grey,
+                          backgroundColor: Colors.grey,
                           context: context, builder: (context){
                         return Column(
                           children: [
                             Column(
                               children: [
-                                Text("Name",style: TextStyle(fontSize: 36),),
-                                Container(
-                                  width: MediaQuery.of(context).size.width*0.9,
-                                  height: MediaQuery.of(context).size.height*0.4,
-                                  child: Column(
-                                    children: [
-                                      Text("Name") ,
-                                      Text("Email") ,
-                                      Text("Phone") ,
-                                      Text("Whatsapp Phone") ,
-                                      Text("Add") ,
-                                      Text("Website") ,
-                                    ],
+                                Text("Name",style: TextStyle(fontSize: 30),),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width*0.9,
+                                    height: MediaQuery.of(context).size.height*0.4,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Divider(),
+                                          ListTile(title: Text("Email"),subtitle: Text(""),),
+                                          Divider(),
+                                          ListTile(title: Text("Phone"),subtitle: Text(""),),
+                                          Divider(),
+                                          ListTile(title: Text("Whatsapp"),subtitle: Text(""),),
+                                          Divider(),
+                                          ListTile(title: Text("Address"),subtitle: Text(""),),
+                                          Divider(),
+                                          ListTile(title: Text("Website"),subtitle: Text(""),),
+
+
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 )
 
