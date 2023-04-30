@@ -89,6 +89,8 @@ class _RegisterState extends State<Register> {
                     child: Column(
                       children: [
                         TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           decoration:  InputDecoration(
                             labelText: "Name",
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -98,6 +100,7 @@ class _RegisterState extends State<Register> {
                             hintText: "Enter Name" ,
                             prefixIcon: Icon(Icons.person,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
+
                           ),
                           controller: _name_cotroller,
                           validator: (value) {
@@ -111,6 +114,8 @@ class _RegisterState extends State<Register> {
 
                         SizedBox(height: 10,),
                         TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           decoration: InputDecoration(
                             labelText: "Email",
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -137,6 +142,8 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
+                          keyboardType: TextInputType.number,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           decoration: InputDecoration(
                             labelText: "Phone Number",
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -162,6 +169,8 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
+                          keyboardType: TextInputType.number,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                             enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -187,6 +196,8 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                             enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -205,6 +216,8 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                             enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -223,6 +236,8 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           obscureText: !_isPasswordVisible1 ,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -260,6 +275,8 @@ class _RegisterState extends State<Register> {
 
                         SizedBox(height: 10,),
                         TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                           obscureText: !_isPasswordVisible2 ,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
@@ -320,10 +337,34 @@ class _RegisterState extends State<Register> {
                                     website: _website.toString(),
                                     address:_address.toString(),
                                     context: context);
+
+                                final snackbar = SnackBar(
+                                  action: SnackBarAction(label: 'Cancel',textColor: Colors.white70,onPressed: (){
+                                    print("Undone") ;
+                                  },),
+                                  ,
+                                  behavior: SnackBarBehavior.floating,
+                                  padding: EdgeInsets.all(5),
+                                  duration: const Duration(seconds: 3),
+                                  backgroundColor: AppColors.theme["tertiaryColor"],
+                                  content : Text("Registration done..."),) ;
+                                ScaffoldMessenger.of(context).showSnackBar(snackbar) ;
+                                final snackbar1 = SnackBar(
+                                  action: SnackBarAction(label: 'Cancel',textColor: Colors.white70,onPressed: (){
+                                    print("Undone") ;
+                                  },),
+
+                                  behavior: SnackBarBehavior.floating,
+                                  padding: EdgeInsets.all(5),
+                                  duration: const Duration(seconds: 3),
+                              backgroundColor: AppColors.theme["tertiaryColor"],
+                                  content : Text("QR Code Createed Please Check Dashboard..."),) ;
+                                ScaffoldMessenger.of(context).showSnackBar(snackbar1) ;
                               }
 
                             },
-                            child: Text("Register",style: TextStyle(color: AppColors.theme["primaryColor"]),)),
+                            child: Text("Register",style: TextStyle(color: AppColors.theme["primaryColor"]),)
+                        ),
                       ],
                     ),
                   ),

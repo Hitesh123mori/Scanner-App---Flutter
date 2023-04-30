@@ -130,8 +130,15 @@ class _LoginScreenState extends State<LoginScreen> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.theme["secondaryColor"],
               ),
-              onPressed: (){
-                FirebaseAuth.instance
+              onPressed: () async {
+
+                 showDialog(
+                     context: context,
+                     builder: (context) {
+                       return Center(child: CircularProgressIndicator()) ;
+                     },
+                 ) ;
+                await FirebaseAuth.instance
                   .signInWithEmailAndPassword(email: _email_controller.text, password: _password_controller.text)
                   .then((value) {
 

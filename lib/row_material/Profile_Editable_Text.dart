@@ -44,6 +44,8 @@ class _EditableText1State extends State<EditableText1> {
             Divider() ,
             Address(),
             Divider() ,
+
+            ElevatedButton(onPressed: (){}, child: Text("Update QR Code"))
           ],
         ),
       ),
