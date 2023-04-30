@@ -29,7 +29,9 @@ class _EditableText1State extends State<EditableText1> {
                 children:[
 
                   CircleAvatar(radius: 100,backgroundColor: Colors.black,),
-                  FloatingActionButton(onPressed: (){},child: Icon(Icons.edit),) ,
+                  FloatingActionButton(onPressed: (){
+
+                  },child: Icon(Icons.edit),) ,
                 ]
             ) ,
             Name() ,

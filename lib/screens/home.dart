@@ -114,6 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
       home: Scaffold(
         backgroundColor: Colors.grey,
         appBar: AppBar(
+          actions: [ Padding(
+            padding: const EdgeInsets.only(right: 28.0),
+            child: Icon(Icons.search,color: Colors.white,),
+          )],
           backgroundColor: Colors.black,
           title: Text("Leads"),
           // backgroundColor: ,
@@ -156,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         // backgroundColor: ,
 
-        body: ContactList(),
+        body: ContactList() ,
 
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
