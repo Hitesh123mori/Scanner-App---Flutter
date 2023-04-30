@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' ;
 import 'package:hackathon_scanner_app/screens/register.dart';
@@ -23,6 +24,36 @@ class _LoginScreenState extends State<LoginScreen> {
   final _password_controller = TextEditingController();
 
   get child => null;
+
+  updateUser(value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('UID', value.user!.uid);
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(value.user!.uid)
+        .get();
+    if (snapshot.exists) {
+      setState(() async {
+        print("entered");
+        var data = snapshot.data();
+        print("ddd=${data!['name']}");
+        await prefs.setString('name', data!['name']);
+        await prefs.setString('email', data['email']);
+        await prefs.setString('phone', data['phone']);
+        // await prefs.setString('wa_phone', data['wa_phone']);
+        // await prefs.setString('website', data['website']);
+        // await prefs.setString('address', data['address']);
+
+        // final prefs = await SharedPreferences.getInstance()
+
+        print("name=====${prefs.getString('name')}");
+      }
+      );
+    }else{
+      print("not enterd");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,11 +131,11 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: (){
                 FirebaseAuth.instance
                   .signInWithEmailAndPassword(email: _email_controller.text, password: _password_controller.text)
-                  .then((value) async {
+                  .then((value) {
 
                 // UserId.uid = value.user!.uid;
-                final prefs = await SharedPreferences.getInstance();
-                await prefs.setString('UID', value.user!.uid);
+               updateUser(value);
+
 
                 //ToDo: add navigator to home screen
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));

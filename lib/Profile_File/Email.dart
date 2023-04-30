@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_scanner_app/CurUser.dart';
 
 class Emails extends StatefulWidget {
   const Emails({Key? key}) : super(key: key);
@@ -9,7 +10,8 @@ class Emails extends StatefulWidget {
 
 class _EmailsState extends State<Emails> {
   final _textController1 = TextEditingController();
-  String _displayText1 = '';
+  String _displayText1 = CurUser.cur_user!.email;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(

@@ -1,15 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon_scanner_app/CurUser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../user.dart';
 
 class ContactList extends StatelessWidget {
-
-  Future<String?> getUid() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('UID');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class ContactList extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
-            .doc(getUid().toString()) // replace `userId` with the actual user ID
+            .doc(CurUser.cur_user!.uid) // replace `userId` with the actual user ID
             .collection('contacts')
             .snapshots(),
           builder: (context, snapshot) {
@@ -30,7 +26,7 @@ class ContactList extends StatelessWidget {
                 phone: doc['phone'],
             wa_phone: doc['wa phone'],
             email: doc['email'],
-            address: doc['addess'],
+            address: doc['address'],
             website: doc['website']))
                 .toList();
 

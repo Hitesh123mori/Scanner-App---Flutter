@@ -20,19 +20,25 @@ class _RegisterState extends State<Register> {
   final _name_cotroller = TextEditingController();
   final _email_cotroller = TextEditingController();
   final _phone_cotroller = TextEditingController();
+  final _wa_phone_cotroller = TextEditingController();
   final _pass_cotroller = TextEditingController();
   final _repass_cotroller = TextEditingController();
+  final _website_cotroller = TextEditingController();
+  final _address_cotroller = TextEditingController();
 
-  String? _name, _email, _phone, _password, _confpassword;
+  String? _name, _email, _phone, _wa_phone, _password, _confpassword, _website, _address;
+
   final _formKey = GlobalKey<FormState>();
 
-  Future createUser({required String name,  required String email, required String phone, required String password, required context}) async {
+  Future createUser({required String name,  required String email, required String phone,
+    required String password, required String wa_phone, required String website, required String address, required context}) async {
     FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password)
         .then((value) async {
       final docUser = FirebaseFirestore.instance.collection('users').doc(value.user!.uid);
       // final tempRef = docUser.collection("contacts").add({"t":"t"}).then((value) => value.delete());
 
-      final json = user.User(uid: value.user!.uid, name: name, email: email, phone: phone, password: password).toJson();
+      final json = user.User(uid: value.user!.uid, name: name, email: email, phone: phone,
+          password: password, wa_phone: wa_phone, website: website, address: address).toJson();
       await docUser.set(json);
 
       final prefs = await SharedPreferences.getInstance();
@@ -141,6 +147,55 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
+                          decoration: const InputDecoration(
+                            labelText: "WhatsApp Number",
+                            hintText: "Enter WhatsApp number" ,
+                            prefixIcon: Icon(Icons.call), //todo: change to WA Icon
+                            border: OutlineInputBorder(),
+                          ),
+                          controller: _wa_phone_cotroller,
+                          validator: (value) {
+                            if (value?.isEmpty ?? true) {
+                              return 'Please enter your phone number';
+                            } else if (!RegExp(r'^\+?[0-9]{10,}$').hasMatch(value!)) {
+                              return 'Please enter a valid phone number';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) => _wa_phone = value?.trim(),
+                        ),
+
+                        SizedBox(height: 10,),
+
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            labelText: "Website (optional)",
+                            hintText: "https://fetchinfo.com" ,
+                            prefixIcon: Icon(Icons.open_in_browser_rounded), //todo change
+                            border: OutlineInputBorder(),
+                          ),
+                          controller: _website_cotroller,
+                          onSaved: (value) => _website = value?.trim(),
+                        ),
+
+
+                        SizedBox(height: 10,),
+
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            labelText: "Address (optional)",
+                            hintText: "Enter Your Address" ,
+                            prefixIcon: Icon(Icons.holiday_village),
+                            border: OutlineInputBorder(),
+                          ),
+                          controller: _address_cotroller,
+                          onSaved: (value) => _address = value?.trim(),
+                        ),
+
+
+                        SizedBox(height: 10,),
+
+                        TextFormField(
                           obscureText: !_isPasswordVisible1 ,
                           decoration: InputDecoration(
                             labelText: "Create Password",
@@ -221,10 +276,12 @@ class _RegisterState extends State<Register> {
                                     email: _email.toString(),
                                     phone: _phone.toString(),
                                     password: _password.toString(),
+                                    wa_phone: _wa_phone.toString(),
+                                    website: _website.toString(),
+                                    address:_address.toString(),
                                     context: context);
 
                               }
-
 
                             },
                             child: Text("Register")),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_scanner_app/CurUser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Name extends StatefulWidget {
   const Name({Key? key}) : super(key: key);
@@ -9,9 +11,13 @@ class Name extends StatefulWidget {
 
 class _NameState extends State<Name> {
   final _textController1 = TextEditingController();
-  String _displayText1 = '';
+
+
   @override
   Widget build(BuildContext context) {
+
+    String _displayText1 = CurUser.cur_user!.name;
+
     return ListTile(
       trailing: IconButton(
         onPressed: () {
