@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EditableTextDemo extends StatefulWidget {
   const EditableTextDemo({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class EditableTextDemo extends StatefulWidget {
 
 class _EditableTextDemoState extends State<EditableTextDemo> {
   final _textController = TextEditingController();
-  String _displayText = '';
+
 
   @override
   void dispose() {
@@ -19,6 +20,8 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
 
   @override
   Widget build(BuildContext context) {
+    String _displayText = '';
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -41,8 +44,10 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
             Expanded(flex:1,child: SizedBox()),
             ElevatedButton(
               onPressed: () {
-                setState(() {
+                setState(() async {
                   _displayText = _textController.text;
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setString('wa_msg', _displayText);
                   _textController.clear();
                 });
               },
