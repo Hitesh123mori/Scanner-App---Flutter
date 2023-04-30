@@ -8,13 +8,21 @@ class User{
   final String email;
   final String phone;
   final String password;
+  final String wa_phone;
+  final String website;
+  final String address;
 
   User({
     required this.uid,
     required this.name,
     required this.email,
     required this.phone,
-    required this.password});
+    required this.password,
+    required this.wa_phone,
+    required this.website,
+    required this.address,
+
+  });
 
   Map<String, dynamic> toJson() => {
     'uid': uid,
@@ -22,7 +30,9 @@ class User{
     'email': email,
     'phone': phone,
     'password': password,
-
+    'wa phone': wa_phone,
+    'website': website,
+    'address': address
   };
 
   static User fromJson(Map<String, dynamic> json) => User(
@@ -31,6 +41,10 @@ class User{
     email: json['email'],
     phone: json['phone'],
     password: json['password'],
+    website: json['website'],
+    wa_phone: json['wa phone'],
+    address: json['address'],
+
   );
 
 }

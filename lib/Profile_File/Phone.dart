@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_scanner_app/CurUser.dart';
 
 class Phone extends StatefulWidget {
   const Phone({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class Phone extends StatefulWidget {
 
 class _PhoneState extends State<Phone> {
   final _textController1 = TextEditingController();
-  String _displayText1 = '';
+  String _displayText1 = CurUser.cur_user!.wa_phone;
   @override
   Widget build(BuildContext context) {
     return ListTile(
