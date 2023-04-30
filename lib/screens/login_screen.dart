@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' ;
+import 'package:hackathon_scanner_app/CurUser.dart';
 import 'package:hackathon_scanner_app/screens/register.dart';
-import 'package:hackathon_scanner_app/user.dart';
+import 'package:hackathon_scanner_app/user.dart' as user;
 import 'package:hackathon_scanner_app/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,13 +39,24 @@ class _LoginScreenState extends State<LoginScreen> {
         print("entered");
         var data = snapshot.data();
         print("ddd=${data!['name']}");
-        await prefs.setString('name', data!['name']);
+        await prefs.setString("UID", data!['uid']);
+        await prefs.setString('name', data['name']);
         await prefs.setString('email', data['email']);
         await prefs.setString('phone', data['phone']);
-        // await prefs.setString('wa_phone', data['wa_phone']);
-        // await prefs.setString('website', data['website']);
-        // await prefs.setString('address', data['address']);
+        await prefs.setString('wa phone', data['wa phone']);
+        await prefs.setString('website', data['website']);
+        await prefs.setString('address', data['address']);
 
+        CurUser.cur_user = user.User(
+          uid: data['uid'],
+          name: data['name'],
+          phone: data['phone'],
+          wa_phone: data["wa phone"],
+          email: data["email"],
+          website: data['website'],
+          address: data['address'],
+          password: data['password']
+        );
         // final prefs = await SharedPreferences.getInstance()
 
         print("name=====${prefs.getString('name')}");

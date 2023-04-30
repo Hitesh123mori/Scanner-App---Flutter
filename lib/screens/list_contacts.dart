@@ -2,10 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_scanner_app/CurUser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../user.dart';
 
 class ContactList extends StatelessWidget {
+
+  void sendWhatsAppMessage(String phone, String message) async {
+    final url = "https://wa.me/$phone/?text=${message}";
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +25,7 @@ class ContactList extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
-            .doc(CurUser.cur_user!.uid) // replace `userId` with the actual user ID
+            .doc(CurUser.cur_user!.uid)
             .collection('contacts')
             .snapshots(),
           builder: (context, snapshot) {
@@ -69,16 +79,22 @@ class ContactList extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 18.0),
-                                    child: Text(contact.phone,style: TextStyle(fontSize: 25),),
+                                    child: Text(contact.wa_phone,style: TextStyle(fontSize: 25),),
                                   ),
 
                                 ],
                               ),
                             ),
                                 Container(
-                                  width: 100,
-                                    height: 100,
-                                    child: IconButton(onPressed: (){}, icon: Image.asset('assets/icons/whatsapp.png'),))
+                                  width: 75,
+                                    height: 75,
+                                    child: IconButton(
+                                      onPressed: (){
+
+                                      },
+
+                                      icon: Image.asset('assets/icons/whatsapp.png'),)
+                                )
                           ],
                         ),
                       ),

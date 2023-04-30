@@ -55,16 +55,20 @@ class _HomeScreenState extends State<HomeScreen> {
         .where('uid', isEqualTo: uid)
         .get();
     if (snapshot.docs.isNotEmpty) {
+      print("entered");
       setState(() {
         _user = snapshot.docs.map((e) {
+          // Map<String, dynamic> sanitizedData = Map.fromEntries(e.data().entries.map((e) => MapEntry<String, dynamic>(e.key, e.key == 'uid' ? null : e.value)));
           var u = user.User.fromJson(e.data());
-          CurUser.cur_user = u;
-          print("object==${CurUser.cur_user?.name}");
+
+          // print("u=========$u");
+          CurUser.cur_user = user.User.fromJson(e.data());
+          // print("object==${CurUser.cur_user?.name}");
           return u;
         }).toList();
         CurUser.cur_user_string = jsonEncode(_user);
         _user_qr_data = CurUser.cur_user_string.toString();
-        print(CurUser.cur_user_string);
+        // print(CurUser.cur_user_string);
       });
     }
   }
@@ -74,7 +78,23 @@ class _HomeScreenState extends State<HomeScreen> {
     var cameraStatus = await Permission.camera.status;
     if(cameraStatus.isGranted){
       String? qrData = await scanner.scan();
-      print(qrData);
+      print("qrData===${qrData}");
+
+      final data = jsonDecode(qrData!);
+      final prefs = await SharedPreferences.getInstance();
+      var uid = await prefs.getString('UID');
+      print("preShare: uid= ${uid}");
+
+      print("UID ============= ${CurUser.cur_user!.uid}");
+      final CollectionReference<Map<String, dynamic>> contactsCollection =
+      FirebaseFirestore.instance.collection('users').doc(uid).collection('contacts');
+
+      data.forEach((contact) {
+        contactsCollection.add(contact);
+      });
+
+      setState(() {});
+
     }
     else{
       var isgrant = await Permission.camera.request();
