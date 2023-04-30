@@ -339,30 +339,21 @@ class _RegisterState extends State<Register> {
                                     context: context);
 
                                 final snackbar = SnackBar(
-                                  action: SnackBarAction(label: 'Cancel',textColor: Colors.white70,onPressed: (){
-                                    print("Undone") ;
-                                  },),
-                                  ,
                                   behavior: SnackBarBehavior.floating,
                                   padding: EdgeInsets.all(5),
                                   duration: const Duration(seconds: 3),
-                                  backgroundColor: AppColors.theme["tertiaryColor"],
+                                  backgroundColor: Colors.grey,
                                   content : Text("Registration done..."),) ;
                                 ScaffoldMessenger.of(context).showSnackBar(snackbar) ;
                                 final snackbar1 = SnackBar(
-                                  action: SnackBarAction(label: 'Cancel',textColor: Colors.white70,onPressed: (){
-                                    print("Undone") ;
-                                  },),
-
                                   behavior: SnackBarBehavior.floating,
                                   padding: EdgeInsets.all(5),
                                   duration: const Duration(seconds: 3),
-                              backgroundColor: AppColors.theme["tertiaryColor"],
+                                  backgroundColor: Colors.grey,
                                   content : Text("QR Code Createed Please Check Dashboard..."),) ;
                                 ScaffoldMessenger.of(context).showSnackBar(snackbar1) ;
                               }
-
-                            },
+                              },
                             child: Text("Register",style: TextStyle(color: AppColors.theme["primaryColor"]),)
                         ),
                       ],

@@ -18,9 +18,11 @@ class _bussinesInfoState extends State<bussinesInfo> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
+
         initialIndex: 1,
         length: 2 ,
         child: Scaffold(
+
           appBar: AppBar(
             leading: BackButton(
               onPressed: (){

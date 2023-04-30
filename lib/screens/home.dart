@@ -111,9 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-
       home: Scaffold(
+        backgroundColor: Colors.grey,
         appBar: AppBar(
+          backgroundColor: Colors.black,
           title: Text("Leads"),
           // backgroundColor: ,
         ),
@@ -158,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: ContactList(),
 
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
           onPressed: (){_scanQRCode();},
           child:Icon(Icons.qr_code_scanner_outlined,) ,
 

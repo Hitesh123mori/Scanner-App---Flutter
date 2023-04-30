@@ -51,13 +51,34 @@ class ContactList extends StatelessWidget {
                 // );
 
                 return InkWell(
-                  onTap: (){print("object");},
+                  onTap: ()
+                    {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.grey,
+                          context: context, builder: (context){
+                        return Column(
+                          children: [
+                            Column(
+                              children: [
+                                Text("Name",style: TextStyle(fontSize: 36),),
+                                Container(
+                                  color: Colors.red,
+                                  width: MediaQuery.of(context).size.width*3 ,
+                                  height: MediaQuery.of(context).size.height*0.1,
+                                )
+
+                              ],
+                            )
+                          ],
+                        );
+                      }) ;
+                    },
                   child: Column(
                     children: [
                       SizedBox(height: 20,),
                       Container(
                         decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Colors.black12,
                             borderRadius: BorderRadius.circular(20)
                         ),
                         width: MediaQuery.of(context).size.width*0.98,
@@ -93,7 +114,7 @@ class ContactList extends StatelessWidget {
 
                                       },
 
-                                      icon: Image.asset('assets/icons/whatsapp.png'),)
+                                      icon: Image.asset('assets/icons/whatsapp-icon-3953.png'),)
                                 )
                           ],
                         ),
