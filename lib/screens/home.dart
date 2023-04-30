@@ -8,6 +8,7 @@ import 'package:hackathon_scanner_app/screens/list_contacts.dart';
 import 'package:hackathon_scanner_app/screens/login_screen.dart';
 import 'package:hackathon_scanner_app/widgets/app_colors.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../row_material/setting.dart';
@@ -25,6 +26,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   String _uid = '';
+  String _user_qr_data = CurUser.cur_user_string.toString();
+
   var _user;
   List<DocumentSnapshot> _documents = [];
 
@@ -40,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (uid != null) {
       setState(() {
         _uid = uid;
+
       });
       _fetchDataFromFirebase(_uid);
     }
@@ -58,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
           print("object==${CurUser.cur_user?.name}");
           return u;
         }).toList();
-        print(jsonEncode(_user));
+        CurUser.cur_user_string = jsonEncode(_user);
+        _user_qr_data = CurUser.cur_user_string.toString();
+        print(CurUser.cur_user_string);
       });
     }
   }
@@ -97,8 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 height: MediaQuery.of(context).size.width*0.75,
                   width: MediaQuery.of(context).size.width*0.75,
-                  child: const DrawerHeader(
-                      child: CircleAvatar()
+                  child: DrawerHeader(
+                      child: QrImage(data: _user_qr_data,)
                   )
               ) ,
               Divider(color: AppColors.theme[""],),
