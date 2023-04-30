@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_scanner_app/user.dart' as user ;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../widgets/app_colors.dart';
 import 'login_screen.dart';
 
 class Register extends StatefulWidget {
@@ -60,7 +61,9 @@ class _RegisterState extends State<Register> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+         backgroundColor: AppColors.theme["primaryColor"] ,
         appBar: AppBar(
+          backgroundColor: AppColors.theme["tertiaryColor"],
           title: Text("Register"),
           leading: BackButton(
             onPressed: (){
@@ -73,9 +76,9 @@ class _RegisterState extends State<Register> {
           child: Column(
             children: [
               SizedBox(height: 30,),
-              const SafeArea(child: Padding(
+              SafeArea(child: Padding(
                 padding: EdgeInsets.only(top:50,left: 20),
-                child: Text("Register",style: TextStyle(fontSize: 30),),
+                child: Text("Register",style: TextStyle(fontSize: 30,color: AppColors.theme["secondaryColor"]),),
               )),
               SizedBox(height: 30,),
               Center(
@@ -86,10 +89,14 @@ class _RegisterState extends State<Register> {
                     child: Column(
                       children: [
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             labelText: "Name",
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                             hintText: "Enter Name" ,
-                            prefixIcon: Icon(Icons.person),
+                            prefixIcon: Icon(Icons.person,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
                           ),
                           controller: _name_cotroller,
@@ -104,10 +111,14 @@ class _RegisterState extends State<Register> {
 
                         SizedBox(height: 10,),
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: "Email",
-                            hintText: "Enter Email" ,
-                            prefixIcon: Icon(Icons.mail),
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            hintText: "Enter Email",
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
+                            prefixIcon: Icon(Icons.mail,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
                           ),
                           controller: _email_cotroller,
@@ -126,10 +137,14 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: "Phone Number",
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                             hintText: "Enter Phone number" ,
-                            prefixIcon: Icon(Icons.call),
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
+                            prefixIcon: Icon(Icons.call,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
                           ),
                           controller: _phone_cotroller,
@@ -147,10 +162,14 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                             labelText: "WhatsApp Number",
                             hintText: "Enter WhatsApp number" ,
-                            prefixIcon: Icon(Icons.call), //todo: change to WA Icon
+                            prefixIcon: Icon(Icons.call,color: AppColors.theme["secondaryColor"],), //todo: change to WA Icon
                             border: OutlineInputBorder(),
                           ),
                           controller: _wa_phone_cotroller,
@@ -168,10 +187,14 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                             labelText: "Website (optional)",
                             hintText: "https://fetchinfo.com" ,
-                            prefixIcon: Icon(Icons.open_in_browser_rounded), //todo change
+                            prefixIcon: Icon(Icons.open_in_browser_rounded,color: AppColors.theme["secondaryColor"],), //todo change
                             border: OutlineInputBorder(),
                           ),
                           controller: _website_cotroller,
@@ -182,10 +205,14 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 10,),
 
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                             labelText: "Address (optional)",
                             hintText: "Enter Your Address" ,
-                            prefixIcon: Icon(Icons.holiday_village),
+                            prefixIcon: Icon(Icons.holiday_village,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
                           ),
                           controller: _address_cotroller,
@@ -198,11 +225,16 @@ class _RegisterState extends State<Register> {
                         TextFormField(
                           obscureText: !_isPasswordVisible1 ,
                           decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                             labelText: "Create Password",
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                             hintText: "Create Your Password",
-                            prefixIcon: Icon(Icons.password),
+                            prefixIcon: Icon(Icons.password,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
                             suffixIcon: IconButton(
+                              color:AppColors.theme["secondaryColor"] ,
                               icon: Icon(
                                 _isPasswordVisible1 ? Icons.visibility : Icons.visibility_off,
                               ),
@@ -230,11 +262,16 @@ class _RegisterState extends State<Register> {
                         TextFormField(
                           obscureText: !_isPasswordVisible2 ,
                           decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                             labelText: "Confirm Password",
+                            labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
+                            hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                             hintText: "Renter Password" ,
-                            prefixIcon: Icon(Icons.password),
+                            prefixIcon: Icon(Icons.password,color: AppColors.theme["secondaryColor"],),
                             border: OutlineInputBorder(),
                             suffixIcon: IconButton(
+                              color:AppColors.theme["secondaryColor"] ,
                               icon: Icon(
                                 _isPasswordVisible2 ? Icons.visibility : Icons.visibility_off,
                               ),
@@ -262,6 +299,9 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 30,),
 
                         ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.theme["secondaryColor"],
+                            ),
                             onPressed: (){
                               // Field Validation
                               if (_formKey.currentState?.validate() ?? true) {
@@ -280,11 +320,10 @@ class _RegisterState extends State<Register> {
                                     website: _website.toString(),
                                     address:_address.toString(),
                                     context: context);
-
                               }
 
                             },
-                            child: Text("Register")),
+                            child: Text("Register",style: TextStyle(color: AppColors.theme["primaryColor"]),)),
                       ],
                     ),
                   ),

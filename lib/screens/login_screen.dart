@@ -77,11 +77,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     style: TextStyle(color:AppColors.theme["secondaryColor"], ),
                     decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                       labelText: "Email/Phone Number",
                       labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
-                      hintText: "Enter Phonenumber" ,
-                      hintStyle: TextStyle(color: AppColors.theme["secondaryColor"],),
+                      hintText: "Enter Phone number" ,
+                      hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                       prefixIcon: Icon(Icons.mail,color: AppColors.theme["secondaryColor"],),
                       border: OutlineInputBorder(),
                     ),
@@ -97,14 +98,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.theme["secondaryColor"],)),
                       labelText: 'Password',
-                      hintStyle: TextStyle(color: AppColors.theme["secondaryColor"],),
+                      hintText: "Enter Password",
+                      hintStyle: TextStyle(color: AppColors.theme["tertiaryColor"],),
                       labelStyle: TextStyle(color: AppColors.theme["secondaryColor"], ),
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.password,color: AppColors.theme["secondaryColor"],),
                       suffixIcon: IconButton(
                         color:AppColors.theme["secondaryColor"] ,
                         icon: Icon(
-                          _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                          _isPasswordVisible ? (Icons.visibility) : (Icons.visibility_off),
                         ),
                         onPressed: () {
                           setState(() {

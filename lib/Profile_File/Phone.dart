@@ -56,7 +56,7 @@ class _PhoneState extends State<Phone> {
       //   ),
       // ),
 
-      title: Text("Whatsup Number"),
+      title: Text("WhatsApp Number"),
       subtitle: Text(_displayText1),
       leading: Icon(Icons.phone),
     ) ;
