@@ -102,47 +102,49 @@ class ContactList extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: 20,),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.black12,
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        width: MediaQuery.of(context).size.width*0.98,
-                        height: 120,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 10,),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 18.0),
-                                    child: Text(contact.name,style: TextStyle(fontSize: 30),),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left :18.0),
-                                    child: Text(contact.email,style: TextStyle(fontSize:25 ),),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 18.0),
-                                    child: Text(contact.wa_phone,style: TextStyle(fontSize: 25),),
-                                  ),
+                      SingleChildScrollView(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black12,
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          width: MediaQuery.of(context).size.width*0.98,
+                          height: 120,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 10,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 18.0),
+                                      child: Text(contact.name,style: TextStyle(fontSize: 25),),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left :18.0),
+                                      child: Text(contact.email,style: TextStyle(fontSize:20 ),),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 18.0),
+                                      child: Text(contact.wa_phone,style: TextStyle(fontSize: 20),),
+                                    ),
 
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                                Container(
-                                  width: 75,
-                                    height: 75,
-                                    child: IconButton(
-                                      onPressed: (){
-                                        sendWhatsAppMessage(contact.wa_phone);
-                                      },
+                                  Container(
+                                    width: 75,
+                                      height: 75,
+                                      child: IconButton(
+                                        onPressed: (){
+                                          sendWhatsAppMessage(contact.wa_phone);
+                                        },
 
-                                      icon: Image.asset('assets/icons/whatsapp-icon-3953.png'),)
-                                )
-                          ],
+                                        icon: Image.asset('assets/icons/whatsapp-icon-3953.png'),)
+                                  )
+                            ],
+                          ),
                         ),
                       ),
                     ],

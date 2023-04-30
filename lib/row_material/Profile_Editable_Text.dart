@@ -28,7 +28,7 @@ class _EditableText1State extends State<EditableText1> {
               alignment: Alignment.bottomRight,
                 children:[
 
-                  CircleAvatar(radius: 100,backgroundColor: Colors.black,),
+                  CircleAvatar(radius: 100,backgroundColor:Colors.white,child: Icon(Icons.person,size: 70,),),
                   FloatingActionButton(onPressed: (){
 
                   },child: Icon(Icons.edit),) ,
