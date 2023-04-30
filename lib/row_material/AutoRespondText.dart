@@ -10,7 +10,7 @@ class EditableTextDemo extends StatefulWidget {
 
 class _EditableTextDemoState extends State<EditableTextDemo> {
   final _textController = TextEditingController();
-
+  String _displayText = '';
 
   @override
   void dispose() {
@@ -20,7 +20,7 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
 
   @override
   Widget build(BuildContext context) {
-    String _displayText = '';
+
 
     return Scaffold(
       body: Padding(
