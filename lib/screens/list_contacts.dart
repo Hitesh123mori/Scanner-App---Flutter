@@ -1,5 +1,7 @@
 
 
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_scanner_app/CurUser.dart';
@@ -15,7 +17,7 @@ class ContactList extends StatelessWidget {
     String? message = await prefs.getString('wa_msg');
 
     final uri_apk = "Whatsapp://send?phone=$phone&text=$message";
-    final uri_ios = "https://wa.me/$phone/?text=${Uri.parse(message!)}";
+    // final uri_ios = "https://wa.me/$phone/?text=${Uri.parse(message!)}";
 
     if (await canLaunchUrl(Uri.parse(uri_apk))) {
       await launchUrl(Uri.parse(uri_apk));
@@ -46,6 +48,7 @@ class ContactList extends StatelessWidget {
             address: doc['address'],
             website: doc['website']))
                 .toList();
+
 
             return ListView.builder(
               itemCount: contacts.length,

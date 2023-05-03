@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future startanimation() async {
-    await Future.delayed(Duration(milliseconds: 50)) ;
+    await Future.delayed(Duration(milliseconds: 100)) ;
     setState(() {
       isanimate = true ;
     });

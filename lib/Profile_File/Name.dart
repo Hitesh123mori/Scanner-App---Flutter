@@ -47,6 +47,7 @@ class _NameState extends State<Name> {
                           setState(() {
                             _displayText1 = _textController1.text;
                             _textController1.clear();
+
                             Navigator.pop(context);
                           });
                         },

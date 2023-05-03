@@ -348,6 +348,7 @@ class _RegisterState extends State<Register> {
                                 final snackbar1 = SnackBar(
                                   behavior: SnackBarBehavior.floating,
                                   padding: EdgeInsets.all(5),
+
                                   duration: const Duration(seconds: 3),
                                   backgroundColor: Colors.grey,
                                   content : Text("QR Code Createed Please Check Dashboard..."),) ;

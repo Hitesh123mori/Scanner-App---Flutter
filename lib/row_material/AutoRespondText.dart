@@ -17,9 +17,13 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
     _textController.dispose();
     super.dispose();
   }
-
+  setMsg(String msg) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('wa_msg', msg);
+  }
   @override
   Widget build(BuildContext context) {
+
 
 
     return Scaffold(
@@ -28,6 +32,11 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+
+            Text(
+              _displayText,
+              style: TextStyle(fontSize: 18),
+            ),
             Expanded(flex:2,child: SizedBox()),
             TextFormField(
               controller: _textController,
@@ -43,11 +52,14 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
             ),
             Expanded(flex:1,child: SizedBox()),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               onPressed: () {
-                setState(() async {
+                if(_textController.text.isEmpty){
+                  return;
+                }
+                setState(() {
                   _displayText = _textController.text;
-                  final prefs = await SharedPreferences.getInstance();
-                  await prefs.setString('wa_msg', _displayText);
+                  setMsg(_displayText);
                   _textController.clear();
                 });
               },
@@ -55,10 +67,6 @@ class _EditableTextDemoState extends State<EditableTextDemo> {
             ),
             Expanded(child: SizedBox()),
 
-            Text(
-              _displayText,
-              style: TextStyle(fontSize: 18),
-            ),
           ],
         ),
       ),

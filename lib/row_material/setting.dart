@@ -22,8 +22,8 @@ class _bussinesInfoState extends State<bussinesInfo> {
         initialIndex: 1,
         length: 2 ,
         child: Scaffold(
-
           appBar: AppBar(
+            backgroundColor: Colors.black,
             leading: BackButton(
               onPressed: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen())) ;
